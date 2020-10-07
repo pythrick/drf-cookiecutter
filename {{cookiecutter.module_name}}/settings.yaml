@@ -1,0 +1,95 @@
+default:
+  # APP specific settings
+  module_name: {{cookiecutter.module_name}}
+  server: foo.com
+  username: default user
+  password: false
+  foo: bar
+  # Django Required starting settings
+  SECRET_KEY: 1234
+  AUTH_USER_MODEL: user.User
+  STATIC_URL: /static/
+  STATIC_ROOT: static
+  ALLOWED_HOSTS:
+    - '*'
+  INSTALLED_APPS:
+    - django.contrib.admin
+    - django.contrib.auth
+    - django.contrib.contenttypes
+    - django.contrib.sessions
+    - django.contrib.messages
+    - django.contrib.staticfiles
+    - rest_framework
+    - {{cookiecutter.module_name}}.apps.user
+    - {{cookiecutter.module_name}}.apps.rest_api
+  MIDDLEWARE:
+    - django.middleware.security.SecurityMiddleware
+    - django.contrib.sessions.middleware.SessionMiddleware
+    - django.middleware.common.CommonMiddleware
+    - django.middleware.csrf.CsrfViewMiddleware
+    - django.contrib.auth.middleware.AuthenticationMiddleware
+    - django.contrib.messages.middleware.MessageMiddleware
+    - django.middleware.clickjacking.XFrameOptionsMiddleware
+  ROOT_URLCONF: {{cookiecutter.module_name}}.urls
+  WSGI_APPLICATION: {{cookiecutter.module_name}}.wsgi.application
+  LANGUAGE_CODE: en-us
+  TIME_ZONE: UTC
+  USE_I18N: true
+  USE_L10N: true
+  USE_TZ: true
+  TEMPLATES:
+    - BACKEND: django.template.backends.django.DjangoTemplates
+      DIRS: []
+      APP_DIRS: true
+      OPTIONS:
+        context_processors:
+          - django.template.context_processors.debug
+          - django.template.context_processors.request
+          - django.contrib.auth.context_processors.auth
+          - django.contrib.messages.context_processors.messages
+  REST_FRAMEWORK:
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    DEFAULT_PERMISSION_CLASSES:
+      - rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly
+
+  # Password validation
+  # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
+  AUTH_PASSWORD_VALIDATORS:
+    - NAME: django.contrib.auth.password_validation.UserAttributeSimilarityValidator
+    - NAME: django.contrib.auth.password_validation.MinimumLengthValidator
+    - NAME: django.contrib.auth.password_validation.CommonPasswordValidator
+    - NAME: django.contrib.auth.password_validation.NumericPasswordValidator
+  # Database
+  # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+  DATABASES:
+    default:
+      ENGINE: django.db.backends.sqlite3
+      NAME: db.sqlite3
+
+development:
+  username: dev user
+  foo: bar dev
+  server: devserver.com
+
+production:
+  server: prodserver.com
+  username: prod user
+  foo: bar prod
+  value: this value is for django app
+
+staging:
+  server: stagingserver.com
+  username: staging user
+  foo: bar stag
+
+testing:
+  server: stagingserver.com
+  username: testing user
+  foo: bar testing
+
+customenv:
+  server: customserver.com
+
+global:
+  foo: It overrides every other env
