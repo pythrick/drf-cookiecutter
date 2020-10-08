@@ -4,5 +4,7 @@
     "module_name": "super_pizzaria",
     "class_name": "SuperPizzaria",
     "description": "My awesome pizzaria project",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "python_version": "3.9.0",
+    "poetry_version": "1.1.0"
 }
