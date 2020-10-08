@@ -1,18 +1,22 @@
-version: "3.5"
+version: "3.8"
 
 services:
-  app: &app
+  
+  db:
+    image: postgres:12.0-alpine
+    env_file:
+      .env
+    ports:
+      - "5432:5432"
+
+  web: 
     build:
       context: .
     image: {{cookiecutter.module_name}}
     volumes:
       - .:/usr/app
     command: gunicorn -t 600 -w 4 -b 0.0.0.0:80 --log-level=debug {{cookiecutter.module_name}}.wsgi
-    env_file: &envfile
+    env_file: 
       - .env
     ports:
       - "8000:80"
-    expose:
-      - "8000"
-    stdin_open: true
-    tty: true
