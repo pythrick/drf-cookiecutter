@@ -1,6 +1,7 @@
 import random
 import string
-import shutil
+
+from shutil import copyfile
 
 
 def create_random_secret_key():
@@ -12,10 +13,14 @@ def create_random_secret_key():
 
 
 def creating_env_file():
-    shutil.copyfile('.env.template', '.env')
+    copyfile('.env.template', '.env')
+
+
+def copy_dot_secrets():
+    copyfile('.secrets.template.yaml', '.secrets.yaml')
 
 
 if __name__ == "__main__":
     create_random_secret_key()
     creating_env_file()
-
+    copy_dot_secrets()
