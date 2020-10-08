@@ -1,8 +1,8 @@
 {
-    "full_name": "Patrick Rodrigues",
-    "email": "patrick.pwall@gmail.com",
-    "module_name": "pizzaria",
-    "class_name": "Pizzaria",
+    "full_name": "John Due",
+    "email": "john.due@example.com",
+    "module_name": "super_pizzaria",
+    "class_name": "SuperPizzaria",
     "description": "My awesome pizzaria project",
     "version": "0.1.0"
 }
