@@ -1,7 +1,7 @@
 import os
 import random
 import string
-
+import shutil
 
 def create_random_secret_key():
     chars = string.ascii_letters + string.digits + "!@#$%ˆ*()-_+=[]]{}\/?.,'"
@@ -11,5 +11,11 @@ def create_random_secret_key():
         secrets_file.write(f"  SECRET_KEY: {secret_key}")
 
 
+def creating_env_file():
+    shutil.copyfile('.env.template', '.env')
+
+
 if __name__ == "__main__":
     create_random_secret_key()
+    creating_env_file()
+
