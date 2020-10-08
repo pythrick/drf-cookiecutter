@@ -1,10 +1,10 @@
-import os
 import random
 import string
 import shutil
 
+
 def create_random_secret_key():
-    chars = string.ascii_letters + string.digits + "!@#$%ˆ*()-_+=[]]{}\/?.,'"
+    chars = string.ascii_letters + string.digits
     secret_key = "".join(random.choice(chars) for _ in range(32))
     with open(".secrets.yaml", "w+") as secrets_file:
         secrets_file.write("default:\n")
