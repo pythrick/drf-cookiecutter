@@ -1,17 +1,32 @@
-FROM python:3.9.0
+FROM python:{{cookiecutter.python_version}} as backend
 
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PYTHONUNBUFFERED 1
+ARG DJANGO_ENV
 
-RUN mkdir -p /usr/app
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 \
+  DJANGO_ENV=${DJANGO_ENV} \  
+  PYTHONFAULTHANDLER=1 \
+  PYTHONUNBUFFERED=1 \
+  PYTHONHASHSEED=random \  
+  PIP_NO_CACHE_DIR=off \
+  PIP_DISABLE_PIP_VERSION_CHECK=on \
+  PIP_DEFAULT_TIMEOUT=100 \  
+  POETRY_VERSION={{cookiecutter.poetry_version}} \
+  POETRY_VIRTUALENVS_CREATE=false
 
-WORKDIR /usr/app
+RUN apt update && apt install -y \
+  curl \
+  libffi-dev \
+  openssl \
+  musl-dev \
+  && rm -rf /var/lib/apt/lists/* \
+  && pip install "poetry==$POETRY_VERSION"
 
-COPY ./pyproject.toml /usr/app
-COPY ./poetry.lock /usr/app
+WORKDIR /app
 
-RUN pip install poetry
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-dev --no-interaction --no-ansi
+COPY ./pyproject.toml /app/
 
-ADD . /usr/app
+RUN poetry install $( test "$DJANGO_ENV" = production && echo "--no-dev") --no-interaction --no-ansi
+
+COPY .env_template /app/.env
+
+COPY . /app/
