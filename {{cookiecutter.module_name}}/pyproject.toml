@@ -13,6 +13,7 @@ djangorestframework = "^3.11.0"
 markdown = "^3.2.2"
 django-filter = "^2.2.0"
 djangorestframework-simplejwt = {git = "https://github.com/SimpleJWT/django-rest-framework-simplejwt"}
+psycopg2-binary  = "^2.8.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
