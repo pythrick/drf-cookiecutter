@@ -324,7 +324,7 @@ tags
 [._]*.un~
 
 # Ignore dynaconf secret files
-.secrets.*
+.secrets.yaml
 
 
 # Ignore static path
