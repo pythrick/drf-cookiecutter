@@ -30,3 +30,5 @@ RUN poetry install $( test "$DJANGO_ENV" = production && echo "--no-dev") --no-i
 COPY .env_template /app/.env
 
 COPY . /app/
+
+RUN python manage.py collectstatic --noinput
