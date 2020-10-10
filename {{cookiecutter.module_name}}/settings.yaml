@@ -20,6 +20,7 @@ default:
     - django.contrib.messages
     - django.contrib.staticfiles
     - rest_framework
+    - drf_yasg
     - {{cookiecutter.module_name}}.apps.user
     - {{cookiecutter.module_name}}.apps.rest_api
   MIDDLEWARE:
