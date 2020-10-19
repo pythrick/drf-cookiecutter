@@ -1,12 +1,8 @@
 default:
   # APP specific settings
   module_name: {{cookiecutter.module_name}}
-  server: foo.com
-  username: default user
-  password: false
-  foo: bar
   # Django Required starting settings
-  SECRET_KEY: 1234
+  DEBUG: false
   AUTH_USER_MODEL: user.User
   STATIC_URL: /static/
   STATIC_ROOT: static
@@ -64,10 +60,12 @@ default:
     - NAME: django.contrib.auth.password_validation.NumericPasswordValidator
   # Database
   # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-  DATABASES:
-    default:
-      ENGINE: django.db.backends.sqlite3
-      NAME: db.sqlite3
+
+localhost:
+  DEBUG: true
+  username: localhost_user
+  foo: bar localhost
+  server: localhostserver.com
 
 development:
   username: dev user
@@ -75,23 +73,21 @@ development:
   server: devserver.com
 
 production:
-  server: prodserver.com
   username: prod user
   foo: bar prod
-  value: this value is for django app
+  server: prodserver.com
 
 staging:
-  server: stagingserver.com
   username: staging user
   foo: bar stag
+  server: stagingserver.com
 
 testing:
-  server: stagingserver.com
+  DEBUG: true
   username: testing user
   foo: bar testing
-
-customenv:
-  server: customserver.com
-
-global:
-  foo: It overrides every other env
+  server: testingserver.com
+  DATABASES:
+    default:
+      ENGINE: django.db.backends.sqlite3
+      NAME: db.sqlite3
