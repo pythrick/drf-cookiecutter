@@ -27,6 +27,4 @@ COPY ./pyproject.toml /app/
 
 RUN poetry install $( test "$DJANGO_ENV" = production && echo "--no-dev") --no-interaction --no-ansi
 
-COPY .env_template /app/.env
-
 COPY . /app/
