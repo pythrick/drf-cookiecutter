@@ -14,6 +14,7 @@ djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 djangorestframework-simplejwt = {git = "https://github.com/SimpleJWT/django-rest-framework-simplejwt"}
+drf-yasg = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
