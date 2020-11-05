@@ -27,7 +27,7 @@ from .apps.rest_api import router
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="{{cookiecutter.module_name}} API",
+      title="{{cookiecutter.class_name}} API",
       default_version='v1',
       description="{{cookiecutter.description}}",
       terms_of_service="https://www.google.com/policies/terms/",
