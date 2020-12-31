@@ -12,11 +12,16 @@ services:
   web: 
     build:
       context: .
+      target: backend
     image: {{cookiecutter.module_name}}
-    volumes:
-      - .:/usr/app
-    command: gunicorn -t 600 -w 4 -b 0.0.0.0:80 --log-level=debug {{cookiecutter.module_name}}.wsgi
+    command: --development --no-fixtures
     env_file: 
       - .env
     ports:
-      - "8000:80"
+      - "8000:8000"
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+    depends_on: 
+      - db
