@@ -2,11 +2,11 @@ from shutil import copyfile
 
 
 def creating_env_file():
-    copyfile('.env.template', '.env')
+    copyfile(".env.template", ".env")
 
 
 def copy_dot_secrets():
-    copyfile('.secrets.template.yaml', '.secrets.yaml')
+    copyfile(".secrets.template.yaml", ".secrets.yaml")
 
 
 if __name__ == "__main__":

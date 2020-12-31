@@ -21,10 +21,15 @@ RUN apt update && apt install -y \
   && rm -rf /var/lib/apt/lists/* \
   && pip install "poetry==$POETRY_VERSION"
 
+WORKDIR /pysetup
+COPY ./pyproject.toml ./poetry.lock*  /pysetup/
+
+RUN poetry install $(test "$DJANGO_ENV" == production && echo "--no-dev") --no-interaction --no-ansi
+
 WORKDIR /app
+COPY . /app
 
-COPY ./pyproject.toml /app/
-
-RUN poetry install $( test "$DJANGO_ENV" = production && echo "--no-dev") --no-interaction --no-ansi
-
-COPY . /app/
+RUN chmod +x /app/entrypoint/entrypoint.sh
+#RUN mv .env.build .env
+RUN python /app/manage.py collectstatic --no-input
+ENTRYPOINT ["/app/entrypoint/entrypoint.sh"]
