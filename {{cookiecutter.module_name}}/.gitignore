@@ -326,6 +326,7 @@ tags
 # Ignore dynaconf secret files
 .secrets.yaml
 
+.env
 
 # Ignore static path
 static

@@ -19,9 +19,9 @@ def api_client_with_credentials(user, api_client):
 
 @pytest.fixture
 def fake():
-    return Faker()
+    return Faker("pt_BR")
 
 
 @pytest.fixture
 def user():
-    return mixer.blend("user.User")
+    return mixer.blend("{{cookiecutter.module_name}}.User")

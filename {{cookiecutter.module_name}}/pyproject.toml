@@ -5,28 +5,33 @@ description = "{{cookiecutter.description}}"
 authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
 
 [tool.poetry.dependencies]
-python = "~3.9.0"
+python = "~{{cookiecutter.python_version}}"
 django = "*"
-psycopg2 = "*"
-dynaconf = {version = "*", extras = ["yaml"]}
-gunicorn = "*"
 djangorestframework = "*"
+psycopg2 = "*"
+gunicorn = "*"
 markdown = "*"
 django-filter = "*"
-djangorestframework-simplejwt = {git = "https://github.com/SimpleJWT/django-rest-framework-simplejwt"}
+djangorestframework-simplejwt = "*"
+django-split-settings = "*"
+dj-database-url = "*"
+python-decouple = "*"
+sentry-sdk = "*"
 
 [tool.poetry.dev-dependencies]
-pytest = "*"
-fake = "*"
-mixer = "*"
-pytest-cov = "*"
-pytest-django = "*"
-pre-commit = "*"
 black = "*"
-mypy = "*"
+django-extensions = "*"
 flake8 = "*"
 isort = "*"
+mixer = "*"
+mypy = "*"
+pre-commit = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-django = "*"
+pytest-env = "*"
+pytest-mock = "*"
 
 [build-system]
-requires = ["poetry>=0.12"]
+requires = ["poetry>={{cookiecutter.poetry_version}}"]
 build-backend = "poetry.masonry.api"

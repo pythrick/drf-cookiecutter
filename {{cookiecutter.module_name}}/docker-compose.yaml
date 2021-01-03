@@ -13,8 +13,10 @@ services:
     build:
       context: .
       target: backend
+      args:
+        DJANGO_ENV: "${DJANGO_ENV}"
     image: {{cookiecutter.module_name}}
-    command: --development --no-fixtures
+    command: "$DOCKER_COMMAND"
     env_file: 
       - .env
     ports:
