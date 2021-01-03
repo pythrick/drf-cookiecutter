@@ -7,7 +7,8 @@ Cookiecutter template for Django + DRF projects following some of the best devel
 ### Gestão de dependências
 - [Poetry](https://python-poetry.org/)
 ### Gestão de configuração 
-- [Dynaconf](https://dynaconf.readthedocs.io/en/latest/)
+- [Decouple](https://github.com/henriquebastos/python-decouple)
+- [django-split-settings](https://github.com/sobolevn/django-split-settings)
 ### Formatação de código
 - [Black](https://black.readthedocs.io/en/stable/)
 - [Isort](https://github.com/timothycrosley/isort)
@@ -23,3 +24,5 @@ Cookiecutter template for Django + DRF projects following some of the best devel
 ### Gestão de containers
 - [Docker](https://www.docker.com/why-docker)
 - [Docker-Compose](https://docs.docker.com/compose/)
+### Monitoramento
+- [Sentry](https://sentry.io/welcome/)
