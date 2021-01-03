@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from .apps.rest_api import router
+from {{cookiecutter.module_name}}.apis.v1 import router
 
 urlpatterns = [
     path("api/v1/", include(router)),

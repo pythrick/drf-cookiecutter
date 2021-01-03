@@ -23,8 +23,8 @@ RUN apt update && apt install -y \
 
 WORKDIR /pysetup
 COPY ./pyproject.toml ./poetry.lock*  /pysetup/
-
-RUN poetry install $(test "$DJANGO_ENV" == production && echo "--no-dev") --no-interaction --no-ansi
+RUN echo $DJANGO_ENV
+RUN poetry install $(test "$DJANGO_ENV" = production && echo "--no-dev") --no-interaction --no-ansi
 
 WORKDIR /app
 COPY . /app
