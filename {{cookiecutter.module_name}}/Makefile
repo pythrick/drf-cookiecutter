@@ -53,7 +53,9 @@ clean-migrations:
 
 migrations:
 	docker-compose run web python manage.py makemigrations
-	
+	docker-compose run web isort ./{{cookiecutter.module_name}}/migrations/*
+	docker-compose run web black ./{{cookiecutter.module_name}}/migrations/*
+
 migrate:
 	docker-compose run web python manage.py migrate
 
