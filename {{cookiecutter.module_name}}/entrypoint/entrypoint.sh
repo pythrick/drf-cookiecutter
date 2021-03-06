@@ -24,8 +24,6 @@ NEW_RELIC_ENVIRONMENT='development'
 # Server bind address and port
 S_ADDRESS='0.0.0.0'
 PORT='8000'
-# Discarded arguments
-OTHER_ARGUMENTS=()
 
 
 display_help() {
@@ -184,8 +182,8 @@ do
         shift 
         ;;
         *)
-        OTHER_ARGUMENTS+=("$1")
-        shift # Remove generic argument from processing
+        exec "@"
+        shift
         ;;
     esac
 done

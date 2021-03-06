@@ -19,7 +19,7 @@ ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="*", cast=decouple.Csv())
 
 AUTH_USER_MODEL = "{{cookiecutter.module_name}}.User"
 
-APPEND_SLASH = False
+APPEND_SLASH = True
 
 INSTALLED_APPS = [
     "django.contrib.admin",
