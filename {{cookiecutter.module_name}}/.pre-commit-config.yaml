@@ -5,21 +5,21 @@ repos:
         name: isort
         stages: [commit]
         language: system
-        entry: docker-compose run --entrypoint="" web isort
+        entry: docker-compose run web isort
         types: [python]
 
       - id: black
         name: black
         stages: [commit]
         language: system
-        entry: docker-compose run --entrypoint="" web black
+        entry: docker-compose run web black
         types: [python]
 
       - id: flake8
         name: flake8
         stages: [commit]
         language: system
-        entry: docker-compose run --entrypoint="" web flake8
+        entry: docker-compose run web flake8
         types: [python]
         exclude: setup.py
 
@@ -27,7 +27,7 @@ repos:
         name: mypy
         stages: [commit]
         language: system
-        entry: docker-compose run --entrypoint="" web mypy
+        entry: docker-compose run web mypy
         types: [python]
         pass_filenames: false
 
@@ -35,6 +35,14 @@ repos:
         name: pytest
         stages: [commit]
         language: system
-        entry: docker-compose run --entrypoint="" web pytest
+        entry: docker-compose run web pytest
         pass_filenames: false
         types: [python]
+
+      - id: pytest-cov
+        name: pytest
+        stages: [ push ]
+        language: system
+        entry: docker-compose run web pytest --cov --cov-fail-under=100
+        types: [ python ]
+        pass_filenames: false
