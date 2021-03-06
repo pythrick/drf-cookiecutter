@@ -48,7 +48,7 @@ clean:
 	@find . -name '*~' -exec rm -rf {} \;
 
 clean-migrations:
-	@find ./who_fixes_api -name '00*_*.py' -exec rm -rf {} \;
+	@find ./{{cookiecutter.module_name}} -name '00*_*.py' -exec rm -rf {} \;
 
 
 migrations:
