@@ -3,7 +3,9 @@ Django settings for {{cookiecutter.module_name}} project.
 
 Generated using django-split-settings, dj-database-url and python-decouple
 """
+{%  if cookiecutter.rest_framework == "django-rest-framework" %}
 from datetime import timedelta
+{% endif %}
 from pathlib import Path
 
 import decouple
@@ -28,7 +30,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+{%- if cookiecutter.rest_framework == "django-rest-framework" -%}
     "rest_framework",
+{% endif %}
     "django_filters",
     "{{cookiecutter.module_name}}",
 ]
@@ -91,6 +95,9 @@ STATIC_ROOT = BASE_DIR / "static"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = STATIC_ROOT / "media"
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+{%- if cookiecutter.rest_framework == "django-rest-framework" -%}
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
@@ -111,3 +118,4 @@ SIMPLE_JWT = {
     ),
     "USER_ID_FIELD": "external_id",
 }
+{% endif %}

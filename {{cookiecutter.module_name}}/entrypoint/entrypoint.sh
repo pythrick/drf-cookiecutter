@@ -182,7 +182,7 @@ do
         shift 
         ;;
         *)
-        exec "@"
+        exec "$@"
         shift
         ;;
     esac

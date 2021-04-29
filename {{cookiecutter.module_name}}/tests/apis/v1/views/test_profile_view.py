@@ -1,4 +1,5 @@
 import pytest
+{%- if cookiecutter.rest_framework == "django-rest-framework" -%}
 from rest_framework import status
 
 
@@ -20,3 +21,4 @@ def test_authorized_patch_on_route_me(api_client_with_credentials, fake):
         "/api/v1/profile/me/", data={"name": fake.name()}
     )
     assert response.status_code == status.HTTP_200_OK
+{%endif%}

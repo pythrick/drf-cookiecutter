@@ -1,8 +1,12 @@
 import os
 
 from split_settings.tools import include
+from dotenv import load_dotenv
 
-DJANGO_ENV = os.environ.setdefault("DJANGO_ENV", "production").lower()
+
+load_dotenv()
+DJANGO_ENV = os.environ.get("DJANGO_ENV")
+print(DJANGO_ENV)
 
 if not DJANGO_ENV:
     raise ImportError(

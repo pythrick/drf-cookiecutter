@@ -1,4 +1,4 @@
-# Routers provide an easy way of automatically determining the URL conf.
+{%- if cookiecutter.rest_framework == "django-rest-framework" -%}
 from django.urls import path
 from rest_framework import routers
 from rest_framework_simplejwt.views import (
@@ -19,3 +19,18 @@ urlpatterns = [
 ]
 
 urlpatterns += router.urls
+
+{%- elif cookiecutter.rest_framework == "django-ninja" -%}
+
+from django.urls import path
+from ninja import NinjaAPI
+
+
+api = NinjaAPI()
+
+
+urlpatterns = [
+    path("", api.urls),
+]
+
+{% endif %}

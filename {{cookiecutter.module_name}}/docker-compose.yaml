@@ -16,7 +16,6 @@ services:
       args:
         DJANGO_ENV: "${DJANGO_ENV}"
     image: {{cookiecutter.module_name}}
-    command: "$DOCKER_COMMAND"
     env_file: 
       - .env
     ports:

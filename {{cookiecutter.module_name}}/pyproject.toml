@@ -7,15 +7,20 @@ authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
 [tool.poetry.dependencies]
 python = "~{{cookiecutter.python_version}}"
 django = "*"
-djangorestframework = "*"
 psycopg2 = "*"
 gunicorn = "*"
 markdown = "*"
 django-filter = "*"
+{% if cookiecutter.rest_framework == "django-rest-framework" %}
+djangorestframework = "*"
 djangorestframework-simplejwt = "*"
+{% elif cookiecutter.rest_framework == "django-ninja" %}
+django-ninja = "*"
+{% endif %}
 django-split-settings = "*"
 dj-database-url = "*"
 python-decouple = "*"
+python-dotenv = "*"
 sentry-sdk = "*"
 
 [tool.poetry.dev-dependencies]
